@@ -1,4 +1,3 @@
-
 let express = require("express");
 let app = express();
 
@@ -16,11 +15,13 @@ app.get("/", function(req, res) {
 });
 
 app.get("/json", function(req, res) {
+  let message = "Hello json";
+
   if (process.env.MESSAGE_STYLE === "uppercase") {
-    res.json({ message: "HELLO JSON" });
-  } else {
-    res.json({ message: "Hello json" });
+    message = "HELLO JSON";
   }
+
+  res.json({ message: message });
 });
 
 function middleware(req, res, next) {
@@ -30,6 +31,10 @@ function middleware(req, res, next) {
 
 app.get("/now", middleware, function(req, res) {
   res.json({ time: req.time });
+});
+
+app.get("/:word/echo", function(req, res) {
+  res.json({ echo: req.params.word });
 });
 
 module.exports = app;
