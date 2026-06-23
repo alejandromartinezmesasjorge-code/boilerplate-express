@@ -37,15 +37,15 @@ app.get("/now", middleware, function(req, res) {
 });
 
 app.get("/name", function(req, res) {
-  res.json({
-    name: req.query.first + " " + req.query.last
-  });
+  res.json({ name: req.query.first + " " + req.query.last });
+});
+
+app.post("/name", function(req, res) {
+  res.json({ name: req.body.first + " " + req.body.last });
 });
 
 app.get("/:word/echo", function(req, res) {
-  res.json({
-    echo: req.params.word
-  });
+  res.json({ echo: req.params.word });
 });
 
 module.exports = app;
