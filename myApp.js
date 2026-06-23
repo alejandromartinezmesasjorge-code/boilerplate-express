@@ -1,3 +1,4 @@
+
 let express = require("express");
 let app = express();
 
@@ -32,9 +33,3 @@ app.get("/now", middleware, function(req, res) {
 });
 
 module.exports = app;
-
-
-
-
-
- 
